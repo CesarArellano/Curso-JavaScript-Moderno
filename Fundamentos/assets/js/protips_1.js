@@ -1,7 +1,8 @@
-const crearPersona = (nombre, apellido) => ({ nombre, apellido });
+const crearPersona = (nombre, apellido) => ({ nombre, apellido }); // () para indicar que se devolverán más de dos argumentos.
 const newPerson = crearPersona('César', 'Arellano');
 console.log(newPerson);
 
+// Destructurando propiedades de objetos y renombrándolos
 const {apellido: nuevoApellido} = crearPersona('César', 'Arellano');
 console.log(nuevoApellido);
 
@@ -26,6 +27,7 @@ const tony = {
   suits: ['Mark I', 'Mark V', 'Hulkbuster'],
 };
 
+// Destructrando propiedades de objetos, poniendo valor por default al parámetro age.
 const imprimePropiedades = ({ name, alive, age = 0 }) => {
   // console.log(character.name);
   console.log(name);
