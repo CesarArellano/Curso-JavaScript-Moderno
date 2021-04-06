@@ -54,8 +54,22 @@ const valorCarta = (carta) => {
     : valor * 1;
 };
 
-const valor = valorCarta('10D');
-console.log(valor);
+// Turno de la computadora
+const turnoComputadora = (puntMinimos) => {
+  do {
+    const carta = pedirCarta();
+    puntosComputadora = puntosComputadora + valorCarta(carta);
+    smalls[1].innerText = puntosComputadora;
+
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.classList.add('carta');
+    divCartasComputadora.append(imgCarta);
+    if( puntMinimos > 21 ) {
+      break;
+    }
+  } while( (puntosComputadora < puntMinimos) && (puntMinimos <= 21));
+};
 
 // Eventos
 
@@ -72,12 +86,21 @@ btnPedir.addEventListener('click', () => {
   if(puntosJugador > 21) {
     console.warn('Lo siento mucho, perdiste');
     btnPedir.disabled = true;
+    btnDetener.disabled = true;
+    turnoComputadora(puntosJugador);
   } else if ( puntosJugador === 21) {
     console.warn('21, genial!');
+    btnPedir.disabled = true;
+    btnDetener.disabled = true;
+    turnoComputadora(puntosJugador)
   }
 });
 
-
+btnDetener.addEventListener('click', () => {
+  btnPedir.disabled = true;
+  btnDetener.disabled = true;
+  turnoComputadora(puntosJugador);
+});
 // Manipulación del DOM
 // const divBotones = document.querySelector('#divBotones');
 // const botonNuevo = document.createElement('button');
