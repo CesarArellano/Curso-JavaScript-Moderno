@@ -17,6 +17,8 @@ const btnPedir = document.querySelector('#btnPedir');
 const btnNuevo = document.querySelector('#btnNuevo');
 const btnDetener = document.querySelector('#btnDetener');
 const smalls = document.querySelectorAll('small');
+const divCartasJugador = document.querySelector('#jugador-cartas');
+const divCartasComputadora = document.querySelector('#computadora-cartas');
 
 const createDeck = () => {
   for(let i = 2; i <= 10; i++) {
@@ -34,7 +36,7 @@ const createDeck = () => {
 
 createDeck();
 console.log(deck);
-deck = _.shuffle(deck);
+deck = _.shuffle(deck); // Función llamada de la librería de underscore
 console.log(deck);
 
 const pedirCarta = () => {
@@ -61,7 +63,18 @@ btnPedir.addEventListener('click', () => {
   const carta = pedirCarta();
   puntosJugador = puntosJugador + valorCarta(carta);
   smalls[0].innerText = puntosJugador;
-  
+
+  const imgCarta = document.createElement('img');
+  imgCarta.src = `assets/cartas/${carta}.png`;
+  imgCarta.classList.add('carta');
+  divCartasJugador.append(imgCarta);
+
+  if(puntosJugador > 21) {
+    console.warn('Lo siento mucho, perdiste');
+    btnPedir.disabled = true;
+  } else if ( puntosJugador === 21) {
+    console.warn('21, genial!');
+  }
 });
 
 
