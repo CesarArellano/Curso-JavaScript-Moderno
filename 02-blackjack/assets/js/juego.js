@@ -27,3 +27,12 @@ createDeck();
 console.log(deck);
 deck = _.shuffle(deck);
 console.log(deck);
+
+const pedirCarta = () => {
+  if(deck.length === 0)
+    throw 'No hay cartas en el deck';  
+  return deck.pop();
+}
+
+deck = [];
+console.log(pedirCarta());
