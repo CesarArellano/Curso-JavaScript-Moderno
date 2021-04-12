@@ -107,7 +107,7 @@
       } else {
         alert('Computadora gana');
       }
-    }, 20);
+    }, 50);
   };
   // Eventos
 
