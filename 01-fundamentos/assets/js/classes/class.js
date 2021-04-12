@@ -1,4 +1,15 @@
-class PersonaNatural {
+class Persona {
+  // Métodos y propiedades que se pueden ocupar sin instanciar la clase
+  static _conteo = 0; // Instancias inicializadas, trabajan de manera oculta e independiente
+  
+  static get getConteo() {
+    return Persona._conteo + ' instancias';
+  }
+
+  static mensaje() {
+    console.log(this.nombre);
+    console.log('Hola a todos, soy un método estático');
+  }
 
   nombre = '';
   codigo = '';
@@ -9,6 +20,7 @@ class PersonaNatural {
     this.nombre = nombre;
     this.codigo = codigo;
     this.frase = frase;
+    Persona._conteo++;
   }
   
   set setComidaFavorita( comida ) {
@@ -31,11 +43,18 @@ class PersonaNatural {
   }
 }
 
-const spiderman = new PersonaNatural('Peter Parker', 'Spiderman', 'Hola soy el hombre araña');
-const ironman = new PersonaNatural('Tony Stark', 'IronMan', 'Hola soy IronMan');
+const spiderman = new Persona('Peter Parker', 'Spiderman', 'Hola soy el hombre araña');
+const ironman = new Persona('Tony Stark', 'IronMan', 'Hola soy IronMan');
 
 spiderman.quienSoy();
 spiderman.setComidaFavorita = 'Pay de Limón';
 console.log(spiderman.getComidaFavorita);
 console.log(spiderman);
 ironman.miFrase();
+
+console.log(`Conteo estático ${ Persona.getConteo }`);
+Persona.mensaje();
+
+Persona.propiedadExterna = 'Hola Mundo';
+
+console.log(Persona.propiedadExterna);
