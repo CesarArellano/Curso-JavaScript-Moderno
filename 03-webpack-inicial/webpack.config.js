@@ -29,8 +29,7 @@ module.exports = {
         test: /\.html$/i,
         loader: 'html-loader',
         options: {
-          attributes: false,
-          minimize: false
+          sources: false,
         },
       },
       {
@@ -43,7 +42,7 @@ module.exports = {
             }
           }
         ]
-      }
+      }      
     ]
   },
   plugins: [
