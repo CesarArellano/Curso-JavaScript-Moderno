@@ -13,7 +13,13 @@ const heroes = {
   }
 };
 
-export const buscarHeroe = (id, callback) => {
+export const buscarHeroe = ( id ) => {
   const heroe = heroes[id];
-  (heroe) ? callback(null, heroe) : callback(`No existe un héroe con el id ${id}`);
-};
+  return new Promise( (resolve, reject) => {
+    if(heroe) {
+      resolve( heroe );
+    } else {
+      reject(`No existe un héroe con el id ${id}`);
+    }
+  });
+}
