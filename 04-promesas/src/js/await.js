@@ -1,12 +1,16 @@
-import { buscarHeroeAsync } from './promesas';
+import { buscarHeroeAsync , buscarHeroe} from './promesas';
 
 const heroesIds = [ 'capi', 'iron', 'spider' ];
 
+// Protip: Mejorar uso de await.
 export const obtenerHeroesArr = async () => {
-  const heroesArr = [];
-  for(const id of heroesIds) {
-    const heroe = await buscarHeroeAsync(id);
-    heroesArr.push(heroe);
-  }
-  return heroesArr;
+  
+  return await Promise.all(heroesIds.map( buscarHeroe ));
+  
+  // Alternativa.
+  // const heroesArr = [];
+  // for(const id of heroesIds) {
+  //   heroesArr.push(buscarHeroe(id));
+  // }
+  // return await Promise.all(heroesArr);
 }
