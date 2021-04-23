@@ -1,6 +1,5 @@
 // import { init } from "./js/jokes-page";
-import { getUsers } from "./js/http-provider";
+import { init } from "./js/usuarios-page";
 
-// init();
+init();
 
-getUsers().then(console.log);
