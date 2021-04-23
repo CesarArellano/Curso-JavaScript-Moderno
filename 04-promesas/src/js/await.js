@@ -48,5 +48,4 @@ export const heroeIfAwait = async ( id ) => {
   } else {
     console.log('Nada');
   }
-
 }
